@@ -34,7 +34,7 @@ public class First_Program {
     @AfterSuite
     public static void cleanUp(){
         driver.manage().deleteAllCookies();
-        //driver.close();
+        driver.close();
     }
 
 
