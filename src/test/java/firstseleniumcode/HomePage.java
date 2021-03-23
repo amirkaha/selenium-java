@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends AbstractPage {
 
-    public final static By loanInput = By.id("Loa3nAmount");
+    public final static By loanInput = By.id("LoanAmount");
     public final static By interestInput = By.id("InterestRate");
     public final static By selectYears = By.id("LoanLengthYears");
     public final static By yearsDropDown = By.xpath("//*[@id=\"LoanLengthYears\"]/option[1]");
@@ -27,11 +27,20 @@ public class HomePage extends AbstractPage {
 
     public void enterYears (int yearAmount) {
         getDriver().findElement(selectYears).click();
-        getWait().until(ExpectedConditions.visibilityOfElementLocated(yearsDropDown ));
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(yearsDropDown));
         getDriver().findElement(By.xpath("//*[@id=\"LoanLengthYears\"]/option[" + yearAmount + "]"));
     }
 
+    public void calculateEachYear() {
+        for (int i = 1; i < 31; i++) {
+            enterYears(i);
+            clickCalculate();
+        }
+
+    }
+
     public void clickCalculate () {
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(calculate));
         getDriver().findElement(calculate).click();
     }
 

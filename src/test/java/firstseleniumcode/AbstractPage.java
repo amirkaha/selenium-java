@@ -6,10 +6,10 @@ public abstract class AbstractPage {
 
     private final static int TIMEOUT = 30;
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private  WebDriver driver;
+    private  WebDriverWait wait;
 
-    public AbstractPage(WebDriver driver) {
+    public AbstractPage(WebDriver driver) throws NullPointerException {
         this.driver = driver;
         this.wait = new WebDriverWait(driver,TIMEOUT);
     }
