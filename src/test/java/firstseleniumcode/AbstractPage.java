@@ -1,5 +1,7 @@
 package firstseleniumcode;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
@@ -17,5 +19,16 @@ public abstract class AbstractPage {
 
     public WebDriverWait getWait() {return wait; }
 
+    public void enterText(By by, String text) {
+        getDriver().findElement(by).sendKeys(text);
+    }
+
+    public void waitFor(By by) {
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    public void clickOn(By by) {
+        getDriver().findElement(by).click();
+    }
 }
 
