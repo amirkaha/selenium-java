@@ -2,9 +2,10 @@ package firstseleniumcode;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
+import org.openqa.selenium.WebElement;
+import static org.testng.Assert.assertEquals;
 
-public class HomePage extends AbstractPage {
+public class CalculatorPage extends AbstractPage {
 
     public final static By loanInput = By.id("LoanAmount");
     public final static By interestInput = By.id("InterestRate");
@@ -12,21 +13,24 @@ public class HomePage extends AbstractPage {
     public final static By yearsDropDown = By.xpath("//*[@id=\"LoanLengthYears\"]/option[1]");
     public final static By calculate = By.xpath("//*[@id=\"calculatorInner\"]/form/fieldset/input[3]");
     public final static By repayment = By.id("js-repayment");
+    public final static By repaymentSlider = By.id("js-repaymentSlider");
 
-    public HomePage(WebDriver driver)  { super (driver); } //this is a constructor, method has same name as class
+    public CalculatorPage(WebDriver driver) {
+        super(driver);
+    } //this is a constructor, method has same name as class
 
-    public HomePage loadPage() {
+    public CalculatorPage loadPage() {
         getDriver().get("https://tools.anz.co.nz/home-loans/repayments-calculator");
         return this;
     }
 
-    public HomePage enterLoan (String loanAmount) {
+    public CalculatorPage enterLoan(String loanAmount) {
         waitFor(loanInput);
         enterText(loanInput, loanAmount);
         return this;
     }
 
-    public HomePage enterInterest (String interestAmount) throws InterruptedException {
+    public CalculatorPage enterInterest(String interestAmount) throws InterruptedException {
         waitFor(interestInput);
         clickOn(interestInput);
         Thread.sleep(1000);
@@ -34,14 +38,14 @@ public class HomePage extends AbstractPage {
         return this;
     }
 
-    public HomePage enterYears (int yearAmount) {
+    public CalculatorPage enterYears(int yearAmount) {
         clickOn(selectYears);
         waitFor(yearsDropDown);
-        getDriver().findElement(By.xpath("//*[@id=\"LoanLengthYears\"]/option[" + yearAmount + "]")).click();
+        findElement(By.xpath("//*[@id=\"LoanLengthYears\"]/option[" + yearAmount + "]")).click();
         return this;
     }
 
-    public HomePage calculateEachYear() {
+    public CalculatorPage calculateEachYear() {
         for (int i = 1; i <= 30; i++) {
             enterYears(i);
             clickCalculate();
@@ -49,16 +53,23 @@ public class HomePage extends AbstractPage {
         return this;
     }
 
-    public HomePage clickCalculate () {
+    public CalculatorPage clickCalculate() {
         waitFor(calculate);
         clickOn(calculate);
         waitFor(calculate);
         return this;
     }
 
-    public void monthlyRepaymentMatches (String expected) {
+    public void monthlyRepaymentMatches(String expected) {
         waitFor(repayment);
-        String actual = getDriver().findElement(repayment).getText();
-        Assert.assertEquals(actual,expected);
+        String actual = getText(repayment);
+        assertEquals(actual, expected);
+    }
+
+    public void sliderCanMove() {
+        waitFor(repaymentSlider);
+        WebElement slider = findElement(repaymentSlider);
+        int sliderWidth = getSliderWidth(slider);
+        moveTheSlider(slider,sliderWidth,0 ); //method that moves the slider
     }
 }
