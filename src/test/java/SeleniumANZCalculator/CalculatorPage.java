@@ -1,4 +1,4 @@
-package firstseleniumcode;
+package SeleniumANZCalculator;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,7 @@ public class CalculatorPage extends AbstractPage {
 
     public CalculatorPage(WebDriver driver) {
         super(driver);
-    } //this is a constructor, method has same name as class
+    }
 
     public CalculatorPage loadPage() {
         getDriver().get("https://tools.anz.co.nz/home-loans/repayments-calculator");
@@ -30,10 +30,10 @@ public class CalculatorPage extends AbstractPage {
         return this;
     }
 
-    public CalculatorPage enterInterest(String interestAmount) throws InterruptedException {
+    public CalculatorPage enterInterest(String interestAmount)  {
         waitFor(interestInput);
         clickOn(interestInput);
-        Thread.sleep(1000);
+        waitFor(interestInput);
         enterText(interestInput, interestAmount);
         return this;
     }
