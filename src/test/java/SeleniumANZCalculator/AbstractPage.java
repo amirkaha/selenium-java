@@ -3,7 +3,6 @@ package SeleniumANZCalculator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
@@ -22,6 +21,11 @@ public abstract class AbstractPage {
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    public void get(String url) {
+        getDriver().get(url);
+
     }
 
     public void enterText(By by, String text) {
@@ -44,14 +48,6 @@ public abstract class AbstractPage {
         return getDriver().findElement(by).getText();
     }
 
-    public Integer getSliderWidth(WebElement slider) {
-        return slider.getSize().getWidth();
-    }
 
-    public void moveTheSlider (WebElement slider, Integer amount, Integer y) {
-        Actions move = new Actions(getDriver());
-        move.moveToElement(slider, ((amount*10)/100), 0).click();
-        move.build().perform();
-    }
 }
 

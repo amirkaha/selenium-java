@@ -30,8 +30,8 @@ public class ANZCalculator {
     @Test
     public void SliderTest() {
         new CalculatorPage(driver)
-                .loadPage().enterLoan("5000").enterYears(2).clickCalculate()
-                .sliderCanMove(); //moves the slider
+                .loadPage().enterLoan("5000").enterYears(2).clickCalculate().sliderCanMove()
+                .newInterestRateMatches("$97");
     }
 
     @AfterTest
