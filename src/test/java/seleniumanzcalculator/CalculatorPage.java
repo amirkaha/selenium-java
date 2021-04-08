@@ -8,14 +8,14 @@ import static org.testng.Assert.assertEquals;
 
 public class CalculatorPage extends AbstractPage {
 
-    public final static By LOAN_AMOUNT = By.id("LoanAmount");
-    public final static By SELECT_YEARS = By.id("LoanLengthYears");
-    public final static By YEARS_DROP_DOWN = By.xpath("//*[@id=\"LoanLengthYears\"]/option[1]");
-    public final static By CALCULATE = By.xpath("//*[@id=\"calculatorInner\"]/form/fieldset/input[3]");
-    public final static By REPAYMENT = By.id("js-repayment");
-    public final static By REPAYMENT_SLIDER = By.id("js-repaymentSlider");
-    public final static By SLIDER_INTEREST_RATE = By.xpath("//*[@id=\"js-repaymetAdjustAjaxRefresh\"]/div[2]/span[2]");
-    public final static By SCENARIO_LEGEND = By.id("scenarioLegend");
+    private final static By LOAN_AMOUNT = By.id("LoanAmount");
+    private final static By SELECT_YEARS = By.id("LoanLengthYears");
+    private final static By YEARS_DROP_DOWN = By.xpath("//*[@id=\"LoanLengthYears\"]/option[1]");
+    private final static By CALCULATE = By.xpath("//*[@id=\"calculatorInner\"]/form/fieldset/input[3]");
+    private final static By REPAYMENT = By.id("js-repayment");
+    private final static By REPAYMENT_SLIDER = By.id("js-repaymentSlider");
+    private final static By SLIDER_INTEREST_RATE = By.xpath("//*[@id=\"js-repaymetAdjustAjaxRefresh\"]/div[2]/span[2]");
+    private final static By SCENARIO_LEGEND = By.id("scenarioLegend");
 
     public CalculatorPage(WebDriver driver) {
         super(driver);
@@ -59,11 +59,11 @@ public class CalculatorPage extends AbstractPage {
             assertEquals(actual, expected);
     }
 
-    public CalculatorPage sliderCanMove(WebDriver driver) {
+    public CalculatorPage sliderCanMove() {
         waitFor(REPAYMENT_SLIDER);
         WebElement slider = findElement(REPAYMENT_SLIDER);
         int sliderWidth = getSliderWidth(slider);
-        moveTheSlider(driver, slider,sliderWidth); //method that moves the slider
+        moveTheSlider(slider,sliderWidth); //method that moves the slider
         return this;
     }
 
@@ -71,7 +71,7 @@ public class CalculatorPage extends AbstractPage {
         return slider.getSize().getWidth();
     }
 
-    public void moveTheSlider(WebDriver driver, WebElement slider, int sliderWidth) {
+    public void moveTheSlider(WebElement slider, int sliderWidth) {
         Actions move = new Actions(driver);
         move.moveToElement(slider, ((sliderWidth*10)/100), 0).click();
         move.build().perform();

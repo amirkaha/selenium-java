@@ -29,14 +29,14 @@ public class ANZCalculatorTest {
     @Test
     public void sliderTest() {
         new CalculatorPage(driver)
-                .loadPage().enterLoan("5000").enterYears(2).clickCalculate().sliderCanMove(driver)
+                .loadPage().enterLoan("5000").enterYears(2).clickCalculate().sliderCanMove()
                 .newInterestRateMatches("$97");
     }
 
     @AfterMethod
     public void cleanUp() {
         driver.manage().deleteAllCookies();
-        driver.close();
+        driver.quit();
     }
 }
 
