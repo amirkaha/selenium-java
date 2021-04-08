@@ -1,10 +1,9 @@
-package SeleniumANZCalculator;
+package seleniumanzcalculator;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import static org.testng.Assert.assertEquals;
 
 public class CalculatorPage extends AbstractPage {
@@ -26,6 +25,7 @@ public class CalculatorPage extends AbstractPage {
         get("https://tools.anz.co.nz/home-loans/repayments-calculator");
         return this;
     }
+
     public CalculatorPage enterYears(int yearAmount) {
         clickOn(SELECT_YEARS);
         waitFor(YEARS_DROP_DOWN);
@@ -49,32 +49,31 @@ public class CalculatorPage extends AbstractPage {
     public void monthlyRepaymentMatches(String expected) {
         waitFor(REPAYMENT);
         String actual = getText(REPAYMENT);
-        assertEquals(actual, expected);
-
+            assertEquals(actual, expected);
     }
 
     public void newInterestRateMatches(String expected) {
         waitFor(SCENARIO_LEGEND);
         waitFor(SLIDER_INTEREST_RATE);
         String actual = getText(SLIDER_INTEREST_RATE);
-        assertEquals(actual, expected);
+            assertEquals(actual, expected);
     }
 
-    public CalculatorPage sliderCanMove() {
+    public CalculatorPage sliderCanMove(WebDriver driver) {
         waitFor(REPAYMENT_SLIDER);
         WebElement slider = findElement(REPAYMENT_SLIDER);
         int sliderWidth = getSliderWidth(slider);
-        moveTheSlider(slider,sliderWidth); //method that moves the slider
+        moveTheSlider(driver, slider,sliderWidth); //method that moves the slider
         return this;
     }
 
-    public Integer getSliderWidth(WebElement slider) {
+    public int getSliderWidth(WebElement slider) {
         return slider.getSize().getWidth();
     }
 
-    public void moveTheSlider (WebElement slider, Integer amount) {
-        Actions move = new Actions(getDriver());
-        move.moveToElement(slider, ((amount*10)/100), 0).click();
+    public void moveTheSlider(WebDriver driver, WebElement slider, int sliderWidth) {
+        Actions move = new Actions(driver);
+        move.moveToElement(slider, ((sliderWidth*10)/100), 0).click();
         move.build().perform();
     }
 }

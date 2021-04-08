@@ -1,15 +1,13 @@
-package SeleniumANZCalculator;
+package seleniumanzcalculator;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-public class ANZCalculator {
+public class ANZCalculatorTest {
     private WebDriver driver;
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
     }
@@ -20,6 +18,7 @@ public class ANZCalculator {
             .loadPage().enterLoan("5000").enterYears(8).clickCalculate() //enters loan, year, clicks calculate
             .monthlyRepaymentMatches("$58"); //Assertion - ensures the monthly repayment amount matches whatevers entered, in this case $58.
     }
+
     @Test
     public void monthlyRepaymentLongTerm () {
         new CalculatorPage(driver)
@@ -28,13 +27,13 @@ public class ANZCalculator {
     }
 
     @Test
-    public void SliderTest() {
+    public void sliderTest() {
         new CalculatorPage(driver)
-                .loadPage().enterLoan("5000").enterYears(2).clickCalculate().sliderCanMove()
+                .loadPage().enterLoan("5000").enterYears(2).clickCalculate().sliderCanMove(driver)
                 .newInterestRateMatches("$97");
     }
 
-    @AfterTest
+    @AfterMethod
     public void cleanUp() {
         driver.manage().deleteAllCookies();
         driver.close();

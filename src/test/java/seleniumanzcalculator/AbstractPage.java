@@ -1,10 +1,9 @@
-package SeleniumANZCalculator;
+package seleniumanzcalculator;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public abstract class AbstractPage {
@@ -14,22 +13,17 @@ public abstract class AbstractPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    public AbstractPage(WebDriver driver) throws NullPointerException {
+    public AbstractPage(WebDriver driver)  {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, TIMEOUT);
     }
 
-    public WebDriver getDriver() {
-        return driver;
-    }
-
     public void get(String url) {
-        getDriver().get(url);
-
+        driver.get(url);
     }
 
     public void enterText(By by, String text) {
-        getDriver().findElement(by).sendKeys(text);
+        driver.findElement(by).sendKeys(text);
     }
 
     public void waitFor(By by) {
@@ -37,17 +31,16 @@ public abstract class AbstractPage {
     }
 
     public void clickOn(By by) {
-        getDriver().findElement(by).click();
+        driver.findElement(by).click();
     }
 
     public WebElement findElement(By by) {
-        return getDriver().findElement(by);
+        return driver.findElement(by);
     }
 
     public String getText(By by) {
-        return getDriver().findElement(by).getText();
+        return driver.findElement(by).getText();
     }
-
 
 }
 
