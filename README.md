@@ -28,12 +28,15 @@ Ensures the Long Term loan functionality is working correctly
 Ensures the Loan Interest Repayment Slider functionality is working correctly
 
 **Failed Report**
+
 ![image](https://user-images.githubusercontent.com/20526337/114341842-c2d0a300-9bae-11eb-99db-6e2daf2a6215.png)
 
 **Screenshot of Failed Report**
+
 ![image](https://user-images.githubusercontent.com/20526337/114341916-f6133200-9bae-11eb-8388-5fc836dc0aa4.png)
 
 **Passed Report**
+
 ![image](https://user-images.githubusercontent.com/20526337/114341979-17741e00-9baf-11eb-81f4-25caa585dbd3.png)
 
 
