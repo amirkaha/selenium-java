@@ -14,7 +14,9 @@ I also chose to run my tests under different bandwidths to simulate how websites
 
 Within the tests, a user can simply parse in any different amount (eg loan amount, year amount) if a more specific test is required.
 
-All tests end with assertions, and any failed assertions will be screenshotted and stored with a custom file name (that of the particular test that failed).
+All tests end with assertions, and any failed assertions will be screenshotted and stored with a custom file name (that of the particular test that failed)
+
+Reports will also be created for each test, stating whether the tests passed or failed (see below examples)
 
 **Test 1**
 Ensures the Short Term loan functionality is working correctly
@@ -24,3 +26,15 @@ Ensures the Long Term loan functionality is working correctly
 
 **Test 3**
 Ensures the Loan Interest Repayment Slider functionality is working correctly
+
+**Failed Report**
+![image](https://user-images.githubusercontent.com/20526337/114341842-c2d0a300-9bae-11eb-99db-6e2daf2a6215.png)
+
+**Screenshot of Failed Report**
+![image](https://user-images.githubusercontent.com/20526337/114341916-f6133200-9bae-11eb-8388-5fc836dc0aa4.png)
+
+**Passed Report**
+![image](https://user-images.githubusercontent.com/20526337/114341979-17741e00-9baf-11eb-81f4-25caa585dbd3.png)
+
+
+
