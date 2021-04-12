@@ -10,7 +10,7 @@ The tests are written in Java, using Selenium Webdriver.
 
 I've made sure my scripts were mininimal, simple and easy to understand (modify) by putting any repetitive actions or lengthy webdriver navigations into seperate methods in an abstact class.  
 
-I also chose to run my tests under different bandwidths to simulate how websites might perform when under load. This allowed me to itentify an issue in my Interest Slider test, which would not recogognize a particular element if the site is running slow. I then updated my code to me more stable and resiliant to these sorts of conditions.
+I also chose to run my tests under different bandwidths to simulate how websites might perform when under load. This allowed me to itentify an issue in my Interest Slider test, which would not recogognize a particular element if the site is running slow. I then updated my code to be more stable and resiliant to these sorts of conditions.
 
 Within the tests, a user can simply parse in any different amount (eg loan ammount, year ammount) if a more specific test is required.
 
