@@ -15,3 +15,12 @@ I also chose to run my tests under different bandwidths to simulate how websites
 Within the tests, a user can simply parse in any different amount (eg loan ammount, year ammount) if a more specific test is required.
 
 All tests end with assertions, and any failed assertions will be screenshotted and stored with a custom file name (that of the particular test that failed).
+
+**Test 1**
+Ensures the Short Term loan funcionality is working correctly
+
+**Test 2**
+Ensures the Long Term loan funcionality is working correctly
+
+**Test 3**
+Ensures the Loan Interest Repayment Slider functionality is working correctly
