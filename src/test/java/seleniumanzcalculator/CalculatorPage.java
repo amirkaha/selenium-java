@@ -49,21 +49,21 @@ public class CalculatorPage extends AbstractPage {
     public void monthlyRepaymentMatches(String expected) {
         waitFor(REPAYMENT);
         String actual = getText(REPAYMENT);
-            assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     public void newInterestRateMatches(String expected) {
         waitFor(SCENARIO_LEGEND);
         waitFor(SLIDER_INTEREST_RATE);
         String actual = getText(SLIDER_INTEREST_RATE);
-            assertEquals(actual, expected);
+        assertEquals(actual, expected);
     }
 
     public CalculatorPage sliderCanMove() {
         waitFor(REPAYMENT_SLIDER);
         WebElement slider = findElement(REPAYMENT_SLIDER);
         int sliderWidth = getSliderWidth(slider);
-        moveTheSlider(slider,sliderWidth); //method that moves the slider
+        moveTheSlider(slider, sliderWidth); //method that moves the slider
         return this;
     }
 
